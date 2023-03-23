@@ -7,7 +7,7 @@ Pascal triangle that prints out an array
 def pascal_triangle(n):
     triangle = []
     if n <= 0:
-        print("Invalid input!")
+        return triangle
     else:
         for i in range(n):
             row = []
