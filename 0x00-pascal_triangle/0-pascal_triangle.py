@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """
 Pascal triangle that prints out an array
-
 """
 
 
 def pascal_triangle(n):
+    """ Retunrs an array of integrs """
+
     triangle = []
 
     if n <= 0:
