@@ -1,1 +1,3 @@
 00 PASCAL TRiANGLE
+SOlution
+Alx
