@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """
 Pascal triangle that prints out an array
+
 """
 
 
 def pascal_triangle(n):
     triangle = []
+
     if n <= 0:
         return triangle
     else:
