@@ -1,34 +1,27 @@
 #!/usr/bin/python3
 """Performs log analysis"""
 
-import sys
-import re
-from collections import defaultdict
 
+import sys
 counter = 0
 file_size = 0
-statusCode_counter = defaultdict(int)
+statusC_counte = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 405: 0, 500: 0}
+stdin = sys.stdin
 
 
-def printCodes(dict, file_s):
-    """Prints the status code and file size"""
-    print("File size: {}".format(file_s))
-    for key in sorted(dict.keys()):
-        if dict[key] != 0:
-            print("{}: {}".format(key, dict[key]))
-
-
-# if __name__ == "__main__":
-    try:
-        for line in sys.stdin:
-            split_string = line.rstrip().split(' ')
-            statusC, f_size = int(split_string[-2]), int(split_string[-1])
-            statusCode_counter[statusC] += 1
-            file_size += f_size
-            if counter != 0 and counter % 10 == 0:
-                printCodes(statusCode_counter, file_size)
+try:
+    for line in stdin:
+        output = line.split()
+        if int(output[-2]) in statusC_counte.keys() and len(output) == 9:
             counter += 1
-        printCodes(statusCode_counter, file_size)
-    except KeyboardInterrupt:
-        printCodes(statusCode_counter, file_size)
-        raise
+            statusC_counte[int(output[-2])] += 1
+            file_size += int(output[-1])
+        if counter % 10 == 0:
+            print('File size: {}'.format(file_size))
+            for key, value in statusC_counte.items():
+                if value:
+                    print("{}: {}".format(key, value))
+except KeyboardInterrupt as error:
+    print('File size: {}'.format(file_size))
+    for key, value in statusC_counte.items():
+        print("{}: {}".format(key, value))
