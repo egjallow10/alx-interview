@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Performs log analysis"""
 
+
 import sys
 
 counter = 0
