@@ -18,7 +18,7 @@ def printCodes(dict, file_s):
             print("{}: {}".format(key, dict[key]))
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     try:
         for line in sys.stdin:
             split_string = line.rstrip().split(' ')
