@@ -6,13 +6,14 @@ import sys
 
 counter = 0
 file_size = 0
-statusC_counte = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+statusC_counte = {200: 0, 301: 0, 400: 0, 401: 0,
+                  403: 0, 404: 0, 405: 0, 500: 0}
 
 try:
     while True:
         line = input().strip()
         output = line.split()
-        if int(output[-2]) in statusC_counte.keys() and len(output) == 9:
+        if int(output[-2]) in statusC_counte.keys() and len(output) == 10:
             counter += 1
             statusC_counte[int(output[-2])] += 1
             file_size += int(output[-1])
