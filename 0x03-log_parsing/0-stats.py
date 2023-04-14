@@ -13,7 +13,7 @@ try:
     while True:
         line = input().strip()
         output = line.split()
-        if int(output[-2]) in statusC_counte.keys() and len(output) == 10:
+        if int(output[-2]) in statusC_counte.keys() and len(output) == 9:
             counter += 1
             statusC_counte[int(output[-2])] += 1
             file_size += int(output[-1])
