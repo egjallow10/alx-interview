@@ -9,15 +9,23 @@ requests({url:`${BASE_URL}/films/3`, json:true}, async function (error, response
     if(error){
         console.log(error)
     }
-    const { characters } = await response.body;
-    //    console.log(characters)
-       characters.forEach(element => {
-            new Promise( (resolve,reject)=>{
-            requests({uri:element,json:true}, async function(error, response){
-                // const {name} = await response.body
-                console.log(await response.body.name)
-            })
-            })
-       });
+    const characters  = body["characters"]
+    for(let index = 0; index < characters.length; index++){
+        const name = await toGetName(characters[index])
+        console.log(name)
+    }
+       
 
  });
+
+ function toGetName(url){
+    const name = new Promise((resolve, reject)=>{
+    requests({url: url},(error, response, body)=>{
+        if(error){
+            console.log(error)
+        }
+        resolve(JSON.parse(body).name)
+    });
+    });
+    return name
+ }
