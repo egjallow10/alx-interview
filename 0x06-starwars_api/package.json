@@ -5,5 +5,8 @@
   },
   "scripts": {
     "start": "semistandard --fix *.js"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0"
   }
 }
